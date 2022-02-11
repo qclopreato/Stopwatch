@@ -1,46 +1,41 @@
+let hour = 0;
 let min = 0;
-let sec = 0;
-let frac = 00;
-let stopAll = 0;
+let second = 0;
+let totalSeconds = 0;
 
-function myTimer(){
-    if (stopAll === 0){
-    document.getElementById("fractionSeconds").innerHTML = frac;
-    frac++;
-    setTimeout(myTimer, 10);
-    if (frac === 100){
-        sec++;
-        document.getElementById("seconds").innerHTML = sec ;
-        console.log(sec);
-        frac = 0;
-        if (sec === 60){
-            min++;
-            document.getElementById("minutes").innerHTML = min ;
-            sec = 0;
-        }
-    }
-    }
-    if (stopAll === 1){
-        document.getElementById("fractionSeconds").innerHTML = frac;
-        document.getElementById("seconds").innerHTML = sec ;
-        document.getElementById("minutes").innerHTML = min ;
-        frac = 0;
-        sec = 0;
-        min = 0;
-        stopAll = 2;
-    }
-    if (stopAll === 2){
-        stopAll = 0;
-        return;
-    }
+function myTimer (){
+    document.getElementById("stop").removeAttribute("disabled");
+    document.getElementById("reset").removeAttribute("disabled");
+    totalSeconds++;
+    hour = Math.floor(totalSeconds / 3600);
+    min = Math.floor(totalSeconds / 60);
+    sec = Math.floor(totalSeconds - ((hour * 3600) + (min *60)));
+
+    document.getElementById("hours").innerHTML = hour;
+    document.getElementById("minutes").innerHTML = min;
+    document.getElementById("seconds").innerHTML = sec;
+}
+
+    document.getElementById("start").addEventListener('click', () => {
+    intervalId = setInterval(myTimer, 1000);
+  })
+
+function setStop(){
+    document.getElementById("start").removeAttribute("disabled");
+    document.getElementById("reset").removeAttribute("disabled");
+    clearInterval(intervalId);
 }
 
 function setZero(){
-    frac = 0;
-    sec = 0;
+    document.getElementById("start").removeAttribute("disabled");
+    document.getElementById("stop").removeAttribute("disabled");
+    clearInterval(intervalId);
+    totalSeconds = 0;
+    hour = 0;
     min = 0;
-    stopAll = 1;
-    return;
+    sec = 0;
+    document.getElementById("hours").innerHTML = hour;
+    document.getElementById("minutes").innerHTML = min;
+    document.getElementById("seconds").innerHTML = sec;
 }
-
 
