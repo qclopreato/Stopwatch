@@ -11,6 +11,16 @@ function myTimer (){
     min = Math.floor(totalSeconds / 60);
     sec = Math.floor(totalSeconds - ((hour * 3600) + (min *60)));
 
+    if (hour.toString().length === 1) {
+        hour = "0" + hour;
+    }
+    if (min.toString().length === 1) {
+        min = "0" + min;
+    }
+    if (sec.toString().length === 1) {
+        sec = "0" + sec;
+    }
+    
     document.getElementById("hours").innerHTML = hour;
     document.getElementById("minutes").innerHTML = min;
     document.getElementById("seconds").innerHTML = sec;
