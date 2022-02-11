@@ -11,10 +11,10 @@
     <div class="container">
         <h1>Stopwatch</h1>
         <p>Vanilla Javascript Stopwatch</p>
-        <p><string id="minutes">00</string> : <string id="seconds">00</string> : <string id="fractionSeconds">00</string></p>
-        <button class="start" id="start" onclick = "myTimer()">Start</button>
-        <button class="stop" id="stop">Stop</button>
-        <button class="reset" id="reset" onclick = "setZero()">Reset</button>
+        <p><string id="hours">00</string> : <string id="minutes">00</string> : <string id="seconds">00</string></p>
+        <button class="start" id="start" onclick = "myTimer(); this.disabled=true;">Start</button>
+        <button class="stop" id="stop" onclick = "setStop(); this.disabled=true;">Stop</button>
+        <button class="reset" id="reset" onclick = "setZero(); this.disabled=true;">Reset</button>
     </div>
     <script src="js/app.js"></script>
 </body>
